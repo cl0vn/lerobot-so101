@@ -1,0 +1,9 @@
+# lerobot_config.yaml
+# Configuration file for lerobot-record command
+# This replaces the long command line with organized, readable settings
+
+# Teleop (teleoperation) configuration
+teleop:
+  type: "so101_leader"
+  port: "/dev/ttyACM0"
+  id: "my_awesome_leader_arm"
