@@ -35,11 +35,9 @@ def load_config(config_path):
     ### MODIFY: Complete the following to read a YAML file
     ### Search which python command reads a YAML file
     with open(config_path, 'r') as file:
-    
+        return yaml.safe_load(file)
 
     
-        
-
 def main():
     """Main function to demonstrate config file usage."""
     
@@ -49,7 +47,7 @@ def main():
     parser = argparse.ArgumentParser(description='Run command from config file')
 
     ### MODIFY: change the following line to read 'config'
-    parser.add_argument(..)
+    parser.add_argument('config')
 
 
     args = parser.parse_args()
@@ -63,7 +61,7 @@ def main():
 
         ### MODIFY: Pass the argument needed, which variable? has the path to the config file
         ### NOTE: This function is above, and needs the path to the config file
-        config = load_config(..)
+        config = load_config(args.config)
 
     except Exception as e:
         print(f"❌ Error: {e}")
