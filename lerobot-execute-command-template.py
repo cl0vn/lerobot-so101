@@ -30,63 +30,15 @@ def load_config(config_path):
         dict: Configuration data
     """
     
-    ### Pseudo code
-    ## config_path = Path(config_path)
+    config_path = Path(config_path)
     
-    ## with open(config_path, 'r') as file:
+    ### MODIFY: Complete the following to read a YAML file
+    ### Search which python command reads a YAML file
+    with open(config_path, 'r') as file:
+    
+
+    
         
-
-def build_command_args(config):
-    """
-    Convert configuration dictionary to command line arguments.
-    
-    Args:
-        config (dict): Configuration data
-        
-    Returns:
-        list: Command line arguments as a list
-    """
-
-    ### Pseudo code example
-    args = ['lerobot-calibrate']  # Base command for example
-    
-     
-    # Teleop configuration
-    if 'teleop' in config:
-        teleop = config['teleop']
-        if 'type' in teleop:
-            args.append(f"--teleop.type={teleop['type']}")
-        if 'port' in teleop:
-            args.append(f"--teleop.port={teleop['port']}")
-        if 'id' in teleop:
-            args.append(f"--teleop.id={teleop['id']}")
-    
-    
-    return args
-
-
-def execute_command(args):
-    """
-    Execute the command or show what would be executed.
-    
-    Args:
-        args (list): Command line arguments
-    """
-
-    ### Pseudo code 
-    command = ' '.join(args)
-    print(f"Command to execute:\n{command}\n")
-    
-    print("🚀 Executing command...")
-    try:
-        # Execute the command
-        result = subprocess.run(...)
-        print("✅ Command executed successfully!")
-        print(f"Output: {result.stdout}")
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Command failed with return code {e.returncode}")
-        print(f"Error: {e.stderr}")
-
 
 def main():
     """Main function to demonstrate config file usage."""
@@ -94,23 +46,25 @@ def main():
     ### Set up the parsing of the command line aruments
     ### For exampple, if in terminal I execute: python lerobot-execute-command-template.py my_config.yaml 
 
-    ### Pseudo code example
-    parser = argparse.ArgumentParser(...)
+    parser = argparse.ArgumentParser(description='Run command from config file')
+
+    ### MODIFY: change the following line to read 'config'
     parser.add_argument(..)
-    parser.add_argument(..)    
+
+
+    args = parser.parse_args()
+
+    ### NOTE: After the previous command, "arg.config" is the variable that has the path to the config file
 
     ### Try to read the configuration file and execute the command
     try:
         ## Load configuration
         print(f"📁 Loading configuration from: {args.config}")
-        config = load_config(...)
-        
-        ## Build command arguments
-        ## print("🔧 Building command arguments...")
-        command_args = build_command_args(config)        
-        # Execute or show command
-        execute_command(command_args)
-        
+
+        ### MODIFY: Pass the argument needed, which variable? has the path to the config file
+        ### NOTE: This function is above, and needs the path to the config file
+        config = load_config(..)
+
     except Exception as e:
         print(f"❌ Error: {e}")
 
