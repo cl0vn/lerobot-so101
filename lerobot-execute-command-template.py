@@ -18,6 +18,35 @@ import subprocess
 import argparse
 from pathlib import Path
 
+def build_command_args(config):
+    """
+    Convert configuration dictionary to command line arguments.
+    
+    Args:
+        config (dict): Configuration data
+        
+    Returns:
+        list: Command line arguments as a list
+    """
+
+    ### Pseudo code example
+    args = ['lerobot-calibrate']  # Base command for example
+    
+     
+    # Teleop configuration
+    ### MODIFY: Complete the following. Append to 'args' all necessary parameters as with teleop.type
+    ### We want to append a text/string as if we would write it in the terminal
+    if 'teleop' in config:
+        teleop = config['teleop']
+        if 'type' in teleop:
+            args.append(f"--teleop.type={teleop['type']}")
+        if ###Continue here
+    
+    
+    ### MODIFY: Print the variable args here to see if everything is correct
+
+    return args
+
 
 def load_config(config_path):
     """
@@ -64,7 +93,9 @@ def main():
         ### NOTE: This function is above, and needs the path to the config file
         config = load_config(args.config)
 
-        print(config['teleop']['type'])
+        ### MODIFY: go the function build_command_args and complete it based on the comments
+        command_args = build_command_args(config)
+
 
     except Exception as e:
         print(f"❌ Error: {e}")
