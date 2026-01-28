@@ -35,6 +35,7 @@ def load_config(config_path):
     ### MODIFY: Complete the following to read a YAML file
     ### Search which python command reads a YAML file
     with open(config_path, 'r') as file:
+        print("I'm here")
         return yaml.safe_load(file)
 
     
@@ -62,6 +63,8 @@ def main():
         ### MODIFY: Pass the argument needed, which variable? has the path to the config file
         ### NOTE: This function is above, and needs the path to the config file
         config = load_config(args.config)
+
+        print(config['teleop']['type'])
 
     except Exception as e:
         print(f"❌ Error: {e}")
