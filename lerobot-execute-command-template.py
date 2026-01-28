@@ -40,10 +40,14 @@ def build_command_args(config):
         teleop = config['teleop']
         if 'type' in teleop:
             args.append(f"--teleop.type={teleop['type']}")
-        if ###Continue here
+        
+        for key, value in teleop.items():
+            if key != 'type':
+                args.append(f"--teleop.{key}={value}")
     
     
     ### MODIFY: Print the variable args here to see if everything is correct
+    print(f"DEBUG: Final command arguments list: {args}")
 
     return args
 
@@ -95,6 +99,9 @@ def main():
 
         ### MODIFY: go the function build_command_args and complete it based on the comments
         command_args = build_command_args(config)
+
+        
+        print(f"🚀 Ready to run: {' '.join(command_args)}")
 
 
     except Exception as e:
