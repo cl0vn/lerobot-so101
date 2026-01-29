@@ -18,6 +18,28 @@ import subprocess
 import argparse
 from pathlib import Path
 
+def execute_command(args):
+    """
+    Execute the command or show what would be executed.
+    
+    Args:
+        args (list): Command line arguments
+    """
+
+    ### Pseudo code 
+    
+    print("🚀 Executing command...")
+    try:
+        # Execute the command
+        ### MODIFY: Modify the next line to run the command
+        result = subprocess.run(...)
+        print("✅ Command executed successfully!")
+        print(f"Output: {result.stdout}")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Command failed with return code {e.returncode}")
+        print(f"Error: {e.stderr}")
+
+
 def build_command_args(config):
     """
     Convert configuration dictionary to command line arguments.
@@ -102,6 +124,10 @@ def main():
 
         
         print(f"🚀 Ready to run: {' '.join(command_args)}")
+
+        ### NEW -- The following function will now execute the command in terminal
+        # Execute or show command
+        execute_command(command_args)
 
 
     except Exception as e:
