@@ -32,7 +32,7 @@ def execute_command(args):
     try:
         # Execute the command
         ### MODIFY: Modify the next line to run the command
-        result = subprocess.run(...)
+        result = subprocess.run(args, capture_output=True, text=True, check=True)
         print("✅ Command executed successfully!")
         print(f"Output: {result.stdout}")
     except subprocess.CalledProcessError as e:
